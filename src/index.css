@@ -173,7 +173,4 @@ html, body {
   overflow-x: hidden;
 }
 
-/* TEST: si ves esto, index.css está cargando */
-body {
-  outline: 6px solid red !important;
-}
+

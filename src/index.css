@@ -173,12 +173,23 @@ html, body {
   overflow-x: hidden;
 }
 
-/* FIX específico botón "Solicitar catálogo mayorista" en mobile */
+/* FIX botón "Solicitar catalogo mayorista" en mobile */
 @media (max-width: 640px) {
-  a:has(span:contains("Solicitar")),
-  button:has(span:contains("Solicitar")) {
+  a,
+  button {
+    box-sizing: border-box;
+  }
+
+  a[href*="catalog"],
+  a[href*="Catalog"],
+  a[href*="catalogo"],
+  a[href*="Catalogo"] {
     font-size: 14px !important;
     padding: 12px 16px !important;
     line-height: 1.2 !important;
+    max-width: 100%;
+    white-space: normal !important;
+    text-align: center;
   }
 }
+

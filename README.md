@@ -1,73 +1,47 @@
-# Welcome to your Lovable project
+# Landing Page – Distribuidora La Plata LED
 
-## Project info
+Landing institucional desarrollada para **Distribuidora La Plata LED**, orientada a presentación de la empresa, marcas trabajadas y contacto comercial.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+---
 
-## How can I edit this code?
+## 📌 Descripción general
 
-There are several ways of editing your application.
+Este proyecto corresponde a una landing page moderna, optimizada para performance y escalabilidad, pensada para campañas publicitarias y presencia digital institucional.
 
-**Use Lovable**
+La estructura del proyecto permite realizar cambios visuales y de contenido sin afectar el funcionamiento general del sitio.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Tecnologías utilizadas
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
+- HTML
+- CSS (Tailwind)
+- JavaScript / TypeScript
 - React
-- shadcn-ui
-- Tailwind CSS
+- Vite
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## 🚀 Deploy
 
-## Can I connect a custom domain to my Lovable project?
+El sitio se encuentra desplegado mediante **Netlify**, conectado a este repositorio.
 
-Yes, you can!
+Cada cambio realizado en la rama principal genera automáticamente una nueva versión publicada.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+---
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## 📊 Medición y analítica
+
+El sitio cuenta con integración para:
+- Google Tag Manager
+- Google Analytics 4
+
+Las etiquetas se gestionan externamente desde las plataformas correspondientes.
+
+---
+
+## ✏️ Edición y mantenimiento
+
+Para realizar cambios en el sitio:
+
+1. Editar los archivos corr

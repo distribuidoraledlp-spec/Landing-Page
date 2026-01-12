@@ -1,0 +1,59 @@
+import warehouse1 from "@/assets/warehouse-1.jpg";
+import warehouse2 from "@/assets/warehouse-2.jpg";
+import warehouse3 from "@/assets/warehouse-3.jpg";
+import warehouse4 from "@/assets/warehouse-4.jpg";
+import warehouse5 from "@/assets/warehouse-5.jpg";
+import warehouse6 from "@/assets/warehouse-6.jpg";
+
+const warehouseImages = [
+  { src: warehouse1, alt: "Depósito La Plata LED - Productos en stock" },
+  { src: warehouse2, alt: "Depósito La Plata LED - Racks con mercadería" },
+  { src: warehouse3, alt: "Depósito La Plata LED - Almacenamiento" },
+  { src: warehouse4, alt: "Depósito La Plata LED - Stock mayorista" },
+  { src: warehouse5, alt: "Depósito La Plata LED - Pasillo principal" },
+  { src: warehouse6, alt: "Depósito La Plata LED - Vista general" },
+];
+
+const WarehouseSection = () => {
+  return (
+    <section className="py-20 bg-background">
+      <div className="container">
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <span className="text-led-glow font-semibold text-sm uppercase tracking-wide mb-4 block">
+            Nuestro depósito
+          </span>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Stock permanente y listo para enviar
+          </h2>
+          <p className="text-muted-foreground text-lg">
+            Contamos con un depósito propio con amplia capacidad de almacenamiento para garantizar disponibilidad inmediata.
+          </p>
+        </div>
+        
+        {/* Image Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {warehouseImages.map((image, index) => (
+            <div 
+              key={index}
+              className={`relative overflow-hidden rounded-xl group ${
+                index === 0 ? "md:col-span-2 md:row-span-2" : ""
+              }`}
+            >
+              <img 
+                src={image.src} 
+                alt={image.alt}
+                className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
+                  index === 0 ? "aspect-square md:aspect-auto md:h-full" : "aspect-square"
+                }`}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-industrial-dark/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default WarehouseSection;

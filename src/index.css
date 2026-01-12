@@ -162,26 +162,3 @@
   }
 }
 
-/* Fix mobile: evita que botones se "coman" el texto */
-@media (max-width: 640px) {
-  a, button {
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  /* Ajusta TODOS los botones tipo CTA */
-  a.inline-flex,
-  button.inline-flex,
-  a.rounded-full,
-  button.rounded-full {
-    padding-top: 14px !important;
-    padding-bottom: 14px !important;
-    line-height: 1.2 !important;
-  }
-
-  /* Si el texto del botón está grande */
-  a.inline-flex span,
-  button.inline-flex span {
-    font-size: 14px !important;
-    line-height: 1.2 !important;
-  }
-}

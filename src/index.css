@@ -172,3 +172,15 @@ html, body {
   width: 100%;
   overflow-x: hidden;
 }
+
+/* --- FIX BOTÓN CATALOGO EN MOBILE --- */
+@media (max-width: 640px) {
+  .btn-catalogo,
+  .catalog-button,
+  button[data-catalogo] {
+    font-size: 14px;        /* un poco más chico */
+    line-height: 1.2;       /* evita que el texto se pegue */
+    padding: 14px 18px;     /* más aire arriba/abajo */
+    border-radius: 9999px;  /* mantiene estilo pill */
+  }
+}

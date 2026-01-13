@@ -1,9 +1,13 @@
+import { Button } from "@/components/ui/button";
+import { MessageCircle } from "lucide-react";
 import warehouse1 from "@/assets/warehouse-1.jpg";
 import warehouse2 from "@/assets/warehouse-2.jpg";
 import warehouse3 from "@/assets/warehouse-3.jpg";
 import warehouse4 from "@/assets/warehouse-4.jpg";
 import warehouse5 from "@/assets/warehouse-5.jpg";
 import warehouse6 from "@/assets/warehouse-6.jpg";
+
+const WHATSAPP_LINK = "https://api.whatsapp.com/send/?phone=5492213146974&text&type=phone_number&app_absent=0";
 
 const warehouseImages = [
   { src: warehouse1, alt: "Depósito La Plata LED - Productos en stock" },
@@ -32,7 +36,7 @@ const WarehouseSection = () => {
         </div>
         
         {/* Image Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12">
           {warehouseImages.map((image, index) => (
             <div 
               key={index}
@@ -51,9 +55,8 @@ const WarehouseSection = () => {
             </div>
           ))}
         </div>
-      </div>
-    </section>
-  );
-};
 
-export default WarehouseSection;
+        {/* --- NUEVO BOTÓN DE ACCIÓN --- */}
+        <div className="flex justify-center">
+            <Button 
+              className="bg-led-glow text-industrial-dark hover:bg-led-glow-soft font-bold shadow-glow text-base px-8 py-6 h-auto w-auto rounded-full transform transition-transform

@@ -1,97 +1,75 @@
-import { Phone, Mail, MapPin, Clock, Facebook, Instagram } from "lucide-react";
+import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-industrial-dark border-t border-industrial-light/20">
-      <div className="container py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Brand */}
+    <footer className="bg-industrial-dark pt-16 pb-8 border-t border-industrial-light/10">
+      <div className="container">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          
+          {/* Columna 1: Logo y Descripción */}
           <div>
-            <div className="mb-6">
-              <span className="font-display text-2xl font-bold text-white">
-                La Plata <span className="text-led-glow">LED</span>
-              </span>
-              <p className="text-steel text-sm mt-1">Distribuidora Mayorista</p>
-            </div>
-            <p className="text-steel text-sm leading-relaxed">
-              Distribución mayorista de materiales eléctricos, iluminación, ferretería y sanitarios 
-              para comercios de todo el país.
+            {/* AQUÍ ESTÁ EL CAMBIO: Se reemplazó el texto por el logo */}
+            <img 
+              src="/lovable-uploads/92815518-7872-46c2-a03e-06153969027e.png" 
+              alt="La Plata LED" 
+              className="h-12 w-auto mb-4" 
+            />
+            <p className="text-steel text-sm mb-6">
+              Distribuidora mayorista de materiales eléctricos, iluminación, ferretería y sanitarios para comercios de todo el país.
             </p>
           </div>
           
-          {/* Contact */}
+          {/* Columna 2: Contacto */}
           <div>
-            <h4 className="font-display font-bold text-white mb-6">Contacto</h4>
+            <h3 className="font-display text-white font-bold mb-4">Contacto</h3>
             <ul className="space-y-4">
-              <li>
-                <a 
-                  href="tel:+542213146974" 
-                  className="flex items-center gap-3 text-steel hover:text-led-glow transition-colors"
-                >
-                  <Phone className="w-4 h-4" />
-                  <span className="text-sm">221-314-6974</span>
-                </a>
+              <li className="flex items-start gap-3">
+                <Phone className="w-5 h-5 text-led-glow flex-shrink-0" />
+                <span className="text-steel text-sm">221-314-6974</span>
               </li>
-              <li>
-                <a 
-                  href="mailto:admi.laplataled@gmail.com" 
-                  className="flex items-center gap-3 text-steel hover:text-led-glow transition-colors"
-                >
-                  <Mail className="w-4 h-4" />
-                  <span className="text-sm">admi.laplataled@gmail.com</span>
-                </a>
+              <li className="flex items-start gap-3">
+                <Mail className="w-5 h-5 text-led-glow flex-shrink-0" />
+                <span className="text-steel text-sm break-all">admi.laplataled@gmail.com</span>
               </li>
-              <li>
-                <div className="flex items-start gap-3 text-steel">
-                  <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Av. 122 esquina 84, Berisso, Buenos Aires</span>
+              <li className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-led-glow flex-shrink-0" />
+                <span className="text-steel text-sm">Av. 122 esquina 84, Berisso, Buenos Aires</span>
+              </li>
+            </ul>
+          </div>
+          
+          {/* Columna 3: Horarios */}
+          <div>
+            <h3 className="font-display text-white font-bold mb-4">Horarios</h3>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <div className="w-5 h-5 flex-shrink-0" />
+                <div className="text-steel text-sm">
+                  <p className="font-medium text-white mb-1">Lunes a viernes</p>
+                  <p>08 a 13 hs</p>
+                  <p>14 a 17 hs</p>
                 </div>
               </li>
             </ul>
           </div>
           
-          {/* Hours */}
+          {/* Columna 4: Redes Sociales */}
           <div>
-            <h4 className="font-display font-bold text-white mb-6">Horarios</h4>
-            <div className="flex items-start gap-3 text-steel">
-              <Clock className="w-4 h-4 flex-shrink-0 mt-0.5" />
-              <div className="text-sm">
-                <p className="font-medium text-white mb-1">Lunes a viernes</p>
-                <p>08 a 13 hs</p>
-                <p>14 a 17 hs</p>
-              </div>
-            </div>
-          </div>
-          
-          {/* Social */}
-          <div>
-            <h4 className="font-display font-bold text-white mb-6">Redes sociales</h4>
+            <h3 className="font-display text-white font-bold mb-4">Redes sociales</h3>
             <div className="flex gap-4">
-              <a 
-                href="https://www.facebook.com/DISTRIBUIDORALAPLATALED/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-industrial-medium flex items-center justify-center text-steel hover:bg-led-glow hover:text-industrial-dark transition-all duration-300"
-              >
+              <a href="#" className="w-10 h-10 rounded-full bg-industrial-medium flex items-center justify-center text-steel hover:bg-led-glow hover:text-industrial-dark transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a 
-                href="https://www.instagram.com/distribuidoralaplataled/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-industrial-medium flex items-center justify-center text-steel hover:bg-led-glow hover:text-industrial-dark transition-all duration-300"
-              >
+              <a href="#" className="w-10 h-10 rounded-full bg-industrial-medium flex items-center justify-center text-steel hover:bg-led-glow hover:text-industrial-dark transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
             </div>
           </div>
         </div>
-      </div>
-      
-      {/* Bottom bar */}
-      <div className="border-t border-industrial-light/20">
-        <div className="container py-6">
-          <p className="text-center text-steel text-sm">
+        
+        {/* Barra inferior de Copyright */}
+        <div className="pt-8 border-t border-industrial-light/10 text-center">
+          <p className="text-steel text-sm">
             © {new Date().getFullYear()} Distribuidora La Plata LED. Todos los derechos reservados.
           </p>
         </div>

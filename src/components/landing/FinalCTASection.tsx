@@ -38,13 +38,18 @@ const FinalCTASection = () => {
                 <MessageCircle className="w-5 h-5" />
                 HABLAR CON UN ASESOR
               </a>
-            </Button>
-            <Button variant="heroOutline" size="xl" asChild>
-              <a href={WHATSAPP_CATALOG_LINK} target="_blank" rel="noopener noreferrer">
-                <FileText className="w-5 h-5" />
-                SOLICITAR CATÁLOGO
-              </a>
-            </Button>
+              <Button variant="heroOutline" size="xl" asChild>
+              <a
+            href={WHATSAPP_CATALOG_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm sm:text-base"
+          >
+          <FileText className="w-5 h-5" />
+          SOLICITAR CATÁLOGO
+  </a>
+</Button>
+
           </div>
         </div>
       </div>

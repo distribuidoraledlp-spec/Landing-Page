@@ -5,10 +5,11 @@ const Footer = () => {
     <footer className="bg-industrial-dark border-t border-industrial-light/20">
       <div className="container py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Brand */}
+          
+          {/* SECCIÓN MARCA (LOGO) */}
           <div>
             <div className="mb-6">
-              {/* RUTA DIRECTA A LA CARPETA PUBLIC */}
+              {/* Usa el logo directo de la carpeta public */}
               <img 
                 src="/logo.png" 
                 alt="La Plata LED" 
@@ -22,13 +23,13 @@ const Footer = () => {
             </p>
           </div>
           
-          {/* Contact */}
+          {/* SECCIÓN CONTACTO */}
           <div>
             <h4 className="font-display font-bold text-white mb-6">Contacto</h4>
             <ul className="space-y-4">
               <li>
                 <a 
-                  href="tel:+542213146974" 
+                  href="https://wa.me/5492213146974" 
                   className="flex items-center gap-3 text-steel hover:text-led-glow transition-colors"
                 >
                   <Phone className="w-4 h-4" />
@@ -47,13 +48,13 @@ const Footer = () => {
               <li>
                 <div className="flex items-start gap-3 text-steel">
                   <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Av. 122 esquina 84, Berisso, Buenos Aires</span>
+                  <span className="text-sm">Av. 122 esquina 84, Berisso</span>
                 </div>
               </li>
             </ul>
           </div>
           
-          {/* Hours */}
+          {/* SECCIÓN HORARIOS */}
           <div>
             <h4 className="font-display font-bold text-white mb-6">Horarios</h4>
             <div className="flex items-start gap-3 text-steel">
@@ -66,23 +67,21 @@ const Footer = () => {
             </div>
           </div>
           
-          {/* Social */}
+          {/* SECCIÓN REDES */}
           <div>
             <h4 className="font-display font-bold text-white mb-6">Redes sociales</h4>
             <div className="flex gap-4">
               <a 
                 href="https://www.facebook.com/DISTRIBUIDORALAPLATALED/" 
                 target="_blank" 
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-industrial-medium flex items-center justify-center text-steel hover:bg-led-glow hover:text-industrial-dark transition-all duration-300"
+                className="w-10 h-10 rounded-lg bg-industrial-medium flex items-center justify-center text-steel hover:bg-led-glow hover:text-industrial-dark transition-all"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a 
                 href="https://www.instagram.com/distribuidoralaplataled/" 
                 target="_blank" 
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-industrial-medium flex items-center justify-center text-steel hover:bg-led-glow hover:text-industrial-dark transition-all duration-300"
+                className="w-10 h-10 rounded-lg bg-industrial-medium flex items-center justify-center text-steel hover:bg-led-glow hover:text-industrial-dark transition-all"
               >
                 <Instagram className="w-5 h-5" />
               </a>
@@ -91,11 +90,11 @@ const Footer = () => {
         </div>
       </div>
       
-      {/* Bottom bar */}
+      {/* BARRA INFERIOR */}
       <div className="border-t border-industrial-light/20">
         <div className="container py-6">
           <p className="text-center text-steel text-sm">
-            © {new Date().getFullYear()} Distribuidora La Plata LED. Todos los derechos reservados.
+            © {new Date().getFullYear()} Distribuidora La Plata LED.
           </p>
         </div>
       </div>

@@ -58,9 +58,9 @@ const BrandsSection = () => {
   };
 
   return (
-    <section className="py-20 bg-concrete">
+    // CAMBIO CLAVE: id="marcas" para que el botón funcione
+    <section id="marcas" className="py-20 bg-concrete scroll-mt-24">
       <div className="container">
-        {/* Encabezado */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="text-led-glow font-semibold text-sm uppercase tracking-wide mb-4 block">
             Marcas de confianza
@@ -73,31 +73,19 @@ const BrandsSection = () => {
           </p>
         </div>
         
-        {/* Carrusel de Marcas (Margen reducido de mb-16 a mb-8) */}
         <div className="relative max-w-4xl mx-auto mb-8">
-          <button
-            onClick={goToPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-10 w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center hover:border-led-glow/50 hover:text-led-glow transition-all duration-300 shadow-md"
-            aria-label="Anterior"
-          >
+          <button onClick={goToPrev} className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-10 w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center hover:border-led-glow/50 hover:text-led-glow transition-all duration-300 shadow-md">
             <ChevronLeft className="w-5 h-5" />
           </button>
           
-          <button
-            onClick={goToNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-10 w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center hover:border-led-glow/50 hover:text-led-glow transition-all duration-300 shadow-md"
-            aria-label="Siguiente"
-          >
+          <button onClick={goToNext} className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-10 w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center hover:border-led-glow/50 hover:text-led-glow transition-all duration-300 shadow-md">
             <ChevronRight className="w-5 h-5" />
           </button>
           
           <div className="min-h-[280px]">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {currentBrands.map((brand, index) => (
-                <div 
-                  key={`${currentPage}-${index}`}
-                  className="flex items-center gap-2 bg-card rounded-xl px-3 md:px-4 py-3 border border-border hover:border-led-glow/30 hover:shadow-card transition-all duration-300 animate-fade-in"
-                >
+                <div key={`${currentPage}-${index}`} className="flex items-center gap-2 bg-card rounded-xl px-3 md:px-4 py-3 border border-border hover:border-led-glow/30 hover:shadow-card transition-all duration-300 animate-fade-in">
                   <CheckCircle className="w-4 h-4 text-led-glow flex-shrink-0" />
                   <span className="font-medium text-foreground text-sm truncate">{brand}</span>
                 </div>
@@ -110,30 +98,20 @@ const BrandsSection = () => {
               <button
                 key={index}
                 onClick={() => setCurrentPage(index)}
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 flex-shrink-0 ${
-                  index === currentPage 
-                    ? "bg-led-glow w-8" 
-                    : "bg-border hover:bg-muted-foreground"
-                }`}
-                aria-label={`Ir a página ${index + 1}`}
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 flex-shrink-0 ${index === currentPage ? "bg-led-glow w-8" : "bg-border hover:bg-muted-foreground"}`}
               />
             ))}
           </div>
         </div>
 
-        {/* --- NUEVO BOTÓN DE ACCIÓN --- */}
         <div className="flex justify-center">
-            <Button 
-              className="bg-led-glow text-industrial-dark hover:bg-led-glow-soft font-bold shadow-glow text-base px-8 py-6 h-auto w-auto rounded-full transform transition-transform hover:scale-105"
-              asChild
-            >
+            <Button className="bg-led-glow text-industrial-dark hover:bg-led-glow-soft font-bold shadow-glow text-base px-8 py-6 h-auto w-auto rounded-full transform transition-transform hover:scale-105" asChild>
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-5 h-5 mr-2" />
                 CONTACTAR ASESOR
               </a>
             </Button>
         </div>
-
       </div>
     </section>
   );

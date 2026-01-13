@@ -34,16 +34,25 @@ const FinalCTASection = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             
-            {/* Botón 1: Contactar (RECUPERADO) */}
-            <Button className="bg-led-glow text-industrial-dark hover:bg-led-glow-soft font-bold" size="xl" asChild>
+            {/* Botón 1: CONTACTAR ASESOR (Ahora es TRANSPARENTE con borde amarillo) */}
+            <Button 
+              variant="outline" 
+              size="xl" 
+              className="border-led-glow text-led-glow hover:bg-led-glow hover:text-industrial-dark font-bold"
+              asChild
+            >
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-5 h-5 mr-2" />
                 CONTACTAR ASESOR
               </a>
             </Button>
 
-            {/* Botón 2: Catálogo (YA ESTABA BIEN) */}
-            <Button variant="outline" className="border-industrial-light text-white hover:bg-industrial-medium" size="xl" asChild>
+            {/* Botón 2: SOLICITAR CATÁLOGO (Ahora es AMARILLO SÓLIDO) */}
+            <Button 
+              size="xl"
+              className="bg-led-glow text-industrial-dark hover:bg-led-glow-soft font-bold"
+              asChild
+            >
               <a href={WHATSAPP_CATALOG_LINK} target="_blank" rel="noopener noreferrer">
                 <FileText className="w-5 h-5 mr-2" />
                 SOLICITAR CATÁLOGO

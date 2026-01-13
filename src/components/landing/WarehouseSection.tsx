@@ -20,9 +20,9 @@ const warehouseImages = [
 
 const WarehouseSection = () => {
   return (
-    <section className="py-20 bg-background">
+    // CAMBIO CLAVE: id="deposito" para que el botón funcione
+    <section id="deposito" className="py-20 bg-background scroll-mt-24">
       <div className="container">
-        {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="text-led-glow font-semibold text-sm uppercase tracking-wide mb-4 block">
             Nuestro depósito
@@ -35,40 +35,26 @@ const WarehouseSection = () => {
           </p>
         </div>
         
-        {/* Image Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12">
           {warehouseImages.map((image, index) => (
             <div 
               key={index}
-              className={`relative overflow-hidden rounded-xl group ${
-                index === 0 ? "md:col-span-2 md:row-span-2" : ""
-              }`}
+              className={`relative overflow-hidden rounded-xl group ${index === 0 ? "md:col-span-2 md:row-span-2" : ""}`}
             >
-              <img 
-                src={image.src} 
-                alt={image.alt}
-                className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
-                  index === 0 ? "aspect-square md:aspect-auto md:h-full" : "aspect-square"
-                }`}
-              />
+              <img src={image.src} alt={image.alt} className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${index === 0 ? "aspect-square md:aspect-auto md:h-full" : "aspect-square"}`} />
               <div className="absolute inset-0 bg-gradient-to-t from-industrial-dark/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
           ))}
         </div>
 
-        {/* --- BOTÓN NUEVO AGREGADO AQUÍ --- */}
-        <div className="flex justify-center mt-12">
-            <Button 
-              className="bg-led-glow text-industrial-dark hover:bg-led-glow-soft font-bold shadow-glow text-base px-8 py-6 h-auto w-auto rounded-full transform transition-transform hover:scale-105"
-              asChild
-            >
+        <div className="flex justify-center">
+            <Button className="bg-led-glow text-industrial-dark hover:bg-led-glow-soft font-bold shadow-glow text-base px-8 py-6 h-auto w-auto rounded-full transform transition-transform hover:scale-105" asChild>
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-5 h-5 mr-2" />
                 CONTACTAR ASESOR
               </a>
             </Button>
         </div>
-
       </div>
     </section>
   );

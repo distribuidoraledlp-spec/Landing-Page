@@ -38,8 +38,9 @@ const steps = [
 
 const HowWeWorkSection = () => {
   return (
-    <section id="como-comprar" className="py-24 bg-background scroll-mt-20">
-      <div className="container">
+    <section id="como-comprar" className="py-24 bg-background scroll-mt-20 overflow-hidden">
+      <div className="container px-4"> {/* Aseguramos padding lateral en el contenedor general */}
+        
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-led-glow font-semibold text-sm uppercase tracking-wide mb-4 block">
@@ -64,12 +65,12 @@ const HowWeWorkSection = () => {
                 }`}
               >
                 {/* Content Card */}
-                <div className={`flex-1 ${index % 2 === 0 ? 'lg:text-right' : 'lg:text-left'}`}>
-                  <div className={`inline-block bg-card rounded-2xl p-6 shadow-card border border-border ${
+                <div className={`flex-1 w-full ${index % 2 === 0 ? 'lg:text-right' : 'lg:text-left'}`}>
+                  <div className={`bg-card rounded-2xl p-6 shadow-card border border-border relative z-10 hover:shadow-elevated transition-shadow duration-300 ${
                     index % 2 === 0 ? 'lg:mr-8' : 'lg:ml-8'
                   }`}>
                     <div className={`flex items-center gap-4 mb-3 ${index % 2 === 0 ? 'lg:flex-row-reverse' : ''}`}>
-                      <step.icon className="w-5 h-5 text-led-glow" />
+                      <step.icon className="w-5 h-5 text-led-glow flex-shrink-0" />
                       <h3 className="font-display text-lg font-bold text-foreground">
                         {step.title}
                       </h3>
@@ -82,7 +83,7 @@ const HowWeWorkSection = () => {
                 
                 {/* Step Number */}
                 <div className="relative z-10 flex-shrink-0">
-                  <div className="w-14 h-14 rounded-full bg-led-glow flex items-center justify-center shadow-glow">
+                  <div className="w-14 h-14 rounded-full bg-led-glow flex items-center justify-center shadow-glow border-4 border-background">
                     <span className="font-display font-bold text-industrial-dark text-lg">{step.number}</span>
                   </div>
                 </div>
@@ -94,12 +95,17 @@ const HowWeWorkSection = () => {
           </div>
         </div>
         
-        {/* CTA */}
-        <div className="text-center mt-16">
-          <Button variant="catalog" size="lg" asChild>
-            <a href={WHATSAPP_CATALOG_LINK} target="_blank" rel="noopener noreferrer">
+        {/* CTA FINAL */}
+        {/* FIX: Usamos 'w-full flex justify-center' para centrado absoluto.
+            El botón tiene 'w-auto' para no ser un ladrillo largo y 'mx-auto' por seguridad. */}
+        <div className="mt-16 w-full flex justify-center items-center">
+          <Button 
+            className="bg-led-glow text-industrial-dark hover:bg-led-glow-soft font-bold shadow-glow text-base px-8 py-6 h-auto w-auto rounded-full mx-auto transform transition-transform hover:scale-105"
+            asChild
+          >
+            <a href={WHATSAPP_CATALOG_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
               <FileText className="w-5 h-5" />
-              SOLICITAR CATÁLOGO MAYORISTA
+              <span>SOLICITAR CATÁLOGO MAYORISTA</span>
             </a>
           </Button>
         </div>

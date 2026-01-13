@@ -36,7 +36,7 @@ const WarehouseSection = () => {
         </div>
         
         {/* Image Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {warehouseImages.map((image, index) => (
             <div 
               key={index}
@@ -56,7 +56,22 @@ const WarehouseSection = () => {
           ))}
         </div>
 
-        {/* --- NUEVO BOTÓN DE ACCIÓN --- */}
-        <div className="flex justify-center">
+        {/* --- BOTÓN NUEVO AGREGADO AQUÍ --- */}
+        <div className="flex justify-center mt-12">
             <Button 
-              className="bg-led-glow text-industrial-dark hover:bg-led-glow-soft font-bold shadow-glow text-base px-8 py-6 h-auto w-auto rounded-full transform transition-transform
+              className="bg-led-glow text-industrial-dark hover:bg-led-glow-soft font-bold shadow-glow text-base px-8 py-6 h-auto w-auto rounded-full transform transition-transform hover:scale-105"
+              asChild
+            >
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="w-5 h-5 mr-2" />
+                CONTACTAR ASESOR
+              </a>
+            </Button>
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+export default WarehouseSection;

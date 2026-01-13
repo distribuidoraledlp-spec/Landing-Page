@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
@@ -8,9 +9,12 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="mb-6">
-              <span className="font-display text-2xl font-bold text-white">
-                La Plata <span className="text-led-glow">LED</span>
-              </span>
+              {/* AQUÍ ESTÁ EL CAMBIO: Logo en imagen en lugar de texto */}
+              <img 
+                src={logo} 
+                alt="La Plata LED" 
+                className="h-12 w-auto mb-3" 
+              />
               <p className="text-steel text-sm mt-1">Distribuidora Mayorista</p>
             </div>
             <p className="text-steel text-sm leading-relaxed">

@@ -31,7 +31,7 @@ const Header = () => {
             <img 
               src={logo} 
               alt="La Plata LED" 
-              className="h-10 md:h-12 w-auto"
+              className="h-14 md:h-16 lg:h-18 w-auto"
             />
           </a>
           

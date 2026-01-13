@@ -73,8 +73,8 @@ const BrandsSection = () => {
           </p>
         </div>
         
-        {/* Carrusel de Marcas */}
-        <div className="relative max-w-4xl mx-auto mb-16">
+        {/* Carrusel de Marcas (Margen reducido de mb-16 a mb-8) */}
+        <div className="relative max-w-4xl mx-auto mb-8">
           <button
             onClick={goToPrev}
             className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-10 w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center hover:border-led-glow/50 hover:text-led-glow transition-all duration-300 shadow-md"

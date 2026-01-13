@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { CheckCircle, ChevronLeft, ChevronRight } from "lucide-react";
+import { CheckCircle, ChevronLeft, ChevronRight, MessageCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+const WHATSAPP_LINK = "https://api.whatsapp.com/send/?phone=5492213146974&text&type=phone_number&app_absent=0";
 
 const brands = [
   "ZELTA", "YAAR", "WIRE FLEX", "VR PLAST", "Viyilant", "VALCAR",
@@ -17,12 +20,8 @@ const brands = [
 
 const BrandsSection = () => {
   const [currentPage, setCurrentPage] = useState(0);
-  // Iniciamos con 12 por defecto, luego el useEffect ajusta según pantalla
   const [itemsPerPage, setItemsPerPage] = useState(12);
 
-  // LÓGICA INTELIGENTE:
-  // Si la pantalla es menor a 768px (celular), usa 6 marcas por página.
-  // Si es mayor, usa 12.
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
@@ -31,22 +30,17 @@ const BrandsSection = () => {
         setItemsPerPage(12);
       }
     };
-
-    // Detectar tamaño al cargar y al cambiar tamaño de ventana
     handleResize();
     window.addEventListener("resize", handleResize);
-    
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const totalPages = Math.ceil(brands.length / itemsPerPage);
   
-  // Rotación automática cada 4 segundos
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentPage((prev) => (prev + 1) % totalPages);
     }, 4000);
-    
     return () => clearInterval(timer);
   }, [totalPages]);
   
@@ -80,8 +74,7 @@ const BrandsSection = () => {
         </div>
         
         {/* Carrusel de Marcas */}
-        <div className="relative max-w-4xl mx-auto">
-          {/* Botón Izquierda */}
+        <div className="relative max-w-4xl mx-auto mb-16">
           <button
             onClick={goToPrev}
             className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-10 w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center hover:border-led-glow/50 hover:text-led-glow transition-all duration-300 shadow-md"
@@ -90,7 +83,6 @@ const BrandsSection = () => {
             <ChevronLeft className="w-5 h-5" />
           </button>
           
-          {/* Botón Derecha */}
           <button
             onClick={goToNext}
             className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-10 w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center hover:border-led-glow/50 hover:text-led-glow transition-all duration-300 shadow-md"
@@ -99,9 +91,7 @@ const BrandsSection = () => {
             <ChevronRight className="w-5 h-5" />
           </button>
           
-          {/* GRILLA DE MARCAS */}
           <div className="min-h-[280px]">
-             {/* AQUÍ ESTÁ EL CAMBIO CLAVE: grid-cols-2 para celular */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {currentBrands.map((brand, index) => (
                 <div 
@@ -115,7 +105,6 @@ const BrandsSection = () => {
             </div>
           </div>
           
-          {/* Puntos de paginación */}
           <div className="flex justify-center gap-2 mt-8 flex-wrap px-4">
             {[...Array(totalPages)].map((_, index) => (
               <button
@@ -131,6 +120,20 @@ const BrandsSection = () => {
             ))}
           </div>
         </div>
+
+        {/* --- NUEVO BOTÓN DE ACCIÓN --- */}
+        <div className="flex justify-center">
+            <Button 
+              className="bg-led-glow text-industrial-dark hover:bg-led-glow-soft font-bold shadow-glow text-base px-8 py-6 h-auto w-auto rounded-full transform transition-transform hover:scale-105"
+              asChild
+            >
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="w-5 h-5 mr-2" />
+                CONTACTAR ASESOR
+              </a>
+            </Button>
+        </div>
+
       </div>
     </section>
   );

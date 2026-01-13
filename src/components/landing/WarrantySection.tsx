@@ -23,10 +23,10 @@ const features = [
 
 const WarrantySection = () => {
   return (
-    <section className="py-20 bg-background">
+    // CAMBIO CLAVE: id="garantia" para que el botón funcione
+    <section id="garantia" className="py-20 bg-background scroll-mt-24">
       <div className="container">
         <div className="max-w-4xl mx-auto">
-          {/* Header */}
           <div className="text-center mb-12">
             <span className="text-led-glow font-semibold text-sm uppercase tracking-wide mb-4 block">
               Tu tranquilidad
@@ -40,13 +40,9 @@ const WarrantySection = () => {
             </p>
           </div>
           
-          {/* Features */}
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             {features.map((feature, index) => (
-              <div 
-                key={index}
-                className="text-center p-6 rounded-2xl bg-card border border-border"
-              >
+              <div key={index} className="text-center p-6 rounded-2xl bg-card border border-border">
                 <div className="w-14 h-14 rounded-xl bg-led-glow/10 flex items-center justify-center mx-auto mb-4">
                   <feature.icon className="w-7 h-7 text-led-glow" />
                 </div>
@@ -60,19 +56,14 @@ const WarrantySection = () => {
             ))}
           </div>
 
-          {/* --- NUEVO BOTÓN DE ACCIÓN --- */}
           <div className="flex justify-center">
-            <Button 
-              className="bg-led-glow text-industrial-dark hover:bg-led-glow-soft font-bold shadow-glow text-base px-8 py-6 h-auto w-auto rounded-full transform transition-transform hover:scale-105"
-              asChild
-            >
+            <Button className="bg-led-glow text-industrial-dark hover:bg-led-glow-soft font-bold shadow-glow text-base px-8 py-6 h-auto w-auto rounded-full transform transition-transform hover:scale-105" asChild>
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-5 h-5 mr-2" />
                 CONTACTAR ASESOR
               </a>
             </Button>
           </div>
-
         </div>
       </div>
     </section>

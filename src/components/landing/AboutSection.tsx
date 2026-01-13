@@ -5,20 +5,23 @@ import productsDisplay from "@/assets/products-display.jpg";
 const WHATSAPP_CATALOG_LINK = "https://api.whatsapp.com/send/?phone=5492213146974&text=Hola!%20%C2%BF%C3%B3mo%20est%C3%A1s%3F%20Quiero%20solicitar%20el%20cat%C3%A1logo%20mayorista&type=phone_number&app_absent=0";
 
 const stats = [
-  { icon: Calendar, value: "2015", label: "Inicio" }, /* Etiqueta acortada para móvil */
-  { icon: Users, value: "2019", label: "Mayorista" },
-  { icon: Target, value: "100%", label: "B2B" },
+  { icon: Calendar, value: "2015", label: "Año de inicio" },
+  { icon: Users, value: "2019", label: "Especialización mayorista" },
+  { icon: Target, value: "100%", label: "Enfoque B2B" },
 ];
 
 const AboutSection = () => {
   return (
     <section id="nosotros" className="py-20 bg-concrete scroll-mt-20 overflow-hidden">
-      <div className="container px-4 md:px-6"> {/* Aseguramos padding lateral */}
+      <div className="container px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
           {/* LADO IMAGEN */}
-          {/* FIX: mb-32 da espacio para que la tarjeta no tape el texto de abajo */}
-          <div className="relative mb-32 lg:mb-0">
+          {/* TRUCO 1: En móvil damos margen abajo (mb-24) para que entre la tarjeta. 
+              En Desktop (lg:mb-0) quitamos ese margen porque la tarjeta flota al lado. */}
+          <div className="relative mb-24 lg:mb-0">
+            
+            {/* Contenedor de la foto */}
             <div className="relative rounded-2xl overflow-hidden shadow-elevated">
               <img 
                 src={productsDisplay} 
@@ -28,15 +31,30 @@ const AboutSection = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-industrial-dark/60 to-transparent" />
             </div>
             
-            {/* Tarjeta flotante de estadísticas */}
-            {/* FIX: Se adapta al ancho (left-4 right-4) y usa Grid para que no se salga el texto */}
-            <div className="absolute -bottom-20 left-4 right-4 lg:w-auto lg:left-auto lg:right-auto lg:translate-x-0 lg:-bottom-8 lg:-right-8 bg-card rounded-2xl p-4 lg:p-6 shadow-elevated z-10 border border-border/50">
+            {/* TARJETA FLOTANTE HÍBRIDA */}
+            <div className="
+              absolute z-20 bg-card rounded-2xl p-4 lg:p-6 shadow-elevated border border-border/50
+              
+              /* ESTILOS MÓVIL (Seguro y centrado) */
+              left-1/2 -translate-x-1/2  /* Centrado horizontal */
+              -bottom-20                 /* Empujado hacia abajo */
+              w-[90%]                    /* Ancho controlado */
+              
+              /* ESTILOS DESKTOP (Vuelve al diseño original) */
+              lg:w-auto                  /* Ancho automático */
+              lg:left-auto lg:translate-x-0 /* Quitamos el centrado */
+              lg:right-[-2rem]           /* Lo sacamos a la derecha (-8) */
+              lg:bottom-[-2rem]          /* Lo subimos un poco respecto al móvil (-8) */
+            ">
               <div className="grid grid-cols-3 gap-2 divide-x divide-border">
                 {stats.map((stat, index) => (
-                  <div key={index} className="text-center px-1">
+                  <div key={index} className="text-center px-2">
                     <stat.icon className="w-5 h-5 mx-auto mb-2 text-led-glow" />
                     <div className="text-lg lg:text-xl font-display font-bold text-foreground">{stat.value}</div>
-                    <div className="text-[11px] lg:text-xs text-muted-foreground uppercase tracking-tight">{stat.label}</div>
+                    {/* Texto pequeño en móvil, normal en desktop */}
+                    <div className="text-[10px] lg:text-xs text-muted-foreground uppercase tracking-tight leading-tight">
+                      {stat.label}
+                    </div>
                   </div>
                 ))}
               </div>

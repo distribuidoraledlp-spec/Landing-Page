@@ -12,7 +12,6 @@ const Footer = () => {
               {/* AQUÍ ESTÁ EL CAMBIO: Logo en imagen en lugar de texto */}
               <img 
                 src={logo} 
-                alt="La Plata LED" 
                 className="h-12 w-auto mb-3" 
               />
               <p className="text-steel text-sm mt-1">Distribuidora Mayorista</p>

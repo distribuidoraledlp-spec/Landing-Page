@@ -1,4 +1,6 @@
 import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
+// 1. IMPORTAMOS LA IMAGEN AQUÍ ARRIBA
+import logo from "@/assets/logo.png"; 
 
 const Footer = () => {
   return (
@@ -8,46 +10,53 @@ const Footer = () => {
           
           {/* Columna 1: Logo y Descripción */}
           <div>
-            {/* AQUÍ ESTÁ EL CAMBIO: Se reemplazó el texto por el logo */}
+            {/* 2. USAMOS LA VARIABLE AQUÍ (entre llaves { }) */}
             <img 
-              src="/lovable-uploads/92815518-7872-46c2-a03e-06153969027e.png" 
+              src={logo} 
               alt="La Plata LED" 
-              className="h-12 w-auto mb-4" 
+              className="h-12 w-auto mb-6 object-contain"
             />
-            <p className="text-steel text-sm mb-6">
+            
+            <p className="text-gray-400 text-sm mb-6 leading-relaxed">
               Distribuidora mayorista de materiales eléctricos, iluminación, ferretería y sanitarios para comercios de todo el país.
             </p>
           </div>
           
           {/* Columna 2: Contacto */}
           <div>
-            <h3 className="font-display text-white font-bold mb-4">Contacto</h3>
+            <h3 className="font-display text-white font-bold mb-4 text-lg">Contacto</h3>
             <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-led-glow flex-shrink-0" />
-                <span className="text-steel text-sm">221-314-6974</span>
+              <li className="flex items-start gap-3 group">
+                <div className="p-2 rounded-full bg-industrial-medium group-hover:bg-led-glow/20 transition-colors">
+                  <Phone className="w-4 h-4 text-led-glow" />
+                </div>
+                <span className="text-gray-300 text-sm self-center">221-314-6974</span>
               </li>
-              <li className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-led-glow flex-shrink-0" />
-                <span className="text-steel text-sm break-all">admi.laplataled@gmail.com</span>
+              <li className="flex items-start gap-3 group">
+                <div className="p-2 rounded-full bg-industrial-medium group-hover:bg-led-glow/20 transition-colors">
+                  <Mail className="w-4 h-4 text-led-glow" />
+                </div>
+                <span className="text-gray-300 text-sm self-center break-all">admi.laplataled@gmail.com</span>
               </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-led-glow flex-shrink-0" />
-                <span className="text-steel text-sm">Av. 122 esquina 84, Berisso, Buenos Aires</span>
+              <li className="flex items-start gap-3 group">
+                <div className="p-2 rounded-full bg-industrial-medium group-hover:bg-led-glow/20 transition-colors">
+                  <MapPin className="w-4 h-4 text-led-glow" />
+                </div>
+                <span className="text-gray-300 text-sm self-center">Av. 122 esquina 84, Berisso, Buenos Aires</span>
               </li>
             </ul>
           </div>
           
           {/* Columna 3: Horarios */}
           <div>
-            <h3 className="font-display text-white font-bold mb-4">Horarios</h3>
+            <h3 className="font-display text-white font-bold mb-4 text-lg">Horarios</h3>
             <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <div className="w-5 h-5 flex-shrink-0" />
-                <div className="text-steel text-sm">
-                  <p className="font-medium text-white mb-1">Lunes a viernes</p>
-                  <p>08 a 13 hs</p>
-                  <p>14 a 17 hs</p>
+              <li className="flex gap-3">
+                <div className="w-1 h-full bg-led-glow/50 rounded-full" />
+                <div className="text-gray-300 text-sm space-y-1">
+                  <p className="font-medium text-white">Lunes a viernes</p>
+                  <p>08:00 a 13:00 hs</p>
+                  <p>14:00 a 17:00 hs</p>
                 </div>
               </li>
             </ul>
@@ -55,12 +64,12 @@ const Footer = () => {
           
           {/* Columna 4: Redes Sociales */}
           <div>
-            <h3 className="font-display text-white font-bold mb-4">Redes sociales</h3>
-            <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-industrial-medium flex items-center justify-center text-steel hover:bg-led-glow hover:text-industrial-dark transition-colors">
+            <h3 className="font-display text-white font-bold mb-4 text-lg">Redes sociales</h3>
+            <div className="flex gap-3">
+              <a href="#" className="w-10 h-10 rounded-full bg-industrial-medium border border-white/5 flex items-center justify-center text-gray-400 hover:bg-led-glow hover:text-industrial-dark hover:border-led-glow transition-all duration-300">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-industrial-medium flex items-center justify-center text-steel hover:bg-led-glow hover:text-industrial-dark transition-colors">
+              <a href="#" className="w-10 h-10 rounded-full bg-industrial-medium border border-white/5 flex items-center justify-center text-gray-400 hover:bg-led-glow hover:text-industrial-dark hover:border-led-glow transition-all duration-300">
                 <Instagram className="w-5 h-5" />
               </a>
             </div>
@@ -68,8 +77,8 @@ const Footer = () => {
         </div>
         
         {/* Barra inferior de Copyright */}
-        <div className="pt-8 border-t border-industrial-light/10 text-center">
-          <p className="text-steel text-sm">
+        <div className="pt-8 border-t border-white/10 text-center">
+          <p className="text-gray-500 text-xs uppercase tracking-wider">
             © {new Date().getFullYear()} Distribuidora La Plata LED. Todos los derechos reservados.
           </p>
         </div>

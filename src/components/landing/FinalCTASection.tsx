@@ -33,22 +33,13 @@ const FinalCTASection = () => {
           
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button variant="hero" size="xl" asChild>
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="w-5 h-5" />
-                HABLAR CON UN ASESOR
+            </Button>
+            <Button variant="heroOutline" size="xl" asChild>
+              <a href={WHATSAPP_CATALOG_LINK} target="_blank" rel="noopener noreferrer">
+                <FileText className="w-5 h-5" />
+                SOLICITAR CATÁLOGO
               </a>
-              <Button variant="heroOutline" size="xl" asChild>
-              <a
-            href={WHATSAPP_CATALOG_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm sm:text-base"
-          >
-          <FileText className="w-5 h-5" />
-          SOLICITAR CATÁLOGO
-  </a>
-</Button>
+            </Button>
 
           </div>
         </div>

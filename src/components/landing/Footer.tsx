@@ -66,10 +66,12 @@ const Footer = () => {
           <div>
             <h3 className="font-display text-white font-bold mb-4 text-lg">Redes sociales</h3>
             <div className="flex gap-3">
-              <a href="#" className="w-10 h-10 rounded-full bg-industrial-medium border border-white/5 flex items-center justify-center text-gray-400 hover:bg-led-glow hover:text-industrial-dark hover:border-led-glow transition-all duration-300">
+              <a href="https://www.facebook.com/DISTRIBUIDORALAPLATALED"
+                className="w-10 h-10 rounded-full bg-industrial-medium border border-white/5 flex items-center justify-center text-gray-400 hover:bg-led-glow hover:text-industrial-dark hover:border-led-glow transition-all duration-300">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-industrial-medium border border-white/5 flex items-center justify-center text-gray-400 hover:bg-led-glow hover:text-industrial-dark hover:border-led-glow transition-all duration-300">
+              <a href="https://www.instagram.com/distribuidoralaplataled/" 
+                className="w-10 h-10 rounded-full bg-industrial-medium border border-white/5 flex items-center justify-center text-gray-400 hover:bg-led-glow hover:text-industrial-dark hover:border-led-glow transition-all duration-300">
                 <Instagram className="w-5 h-5" />
               </a>
             </div>

@@ -1,106 +1,120 @@
+import { useEffect, useState } from "react";
+import { CheckCircle, ChevronLeft, ChevronRight, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Menu, X } from "lucide-react";
-import { useState } from "react";
-import logo from "@/assets/logo.png";
 
 const WHATSAPP_LINK = "https://api.whatsapp.com/send/?phone=5492213146974&text&type=phone_number&app_absent=0";
 
-// --- AQUÍ ESTÁN LOS NUEVOS ÍTEMS DEL MENÚ ---
-const navItems = [
-  { label: "Productos", href: "#productos" },      // Requiere id="productos" en ProductLinesSection
-  { label: "Marcas", href: "#marcas" },            // Ya lo configuramos
-  { label: "Cómo comprar", href: "#como-comprar" }, // Ya lo configuramos
-  { label: "Depósito", href: "#deposito" },        // Ya lo configuramos
-  { label: "Garantía", href: "#garantia" },        // Ya lo configuramos
-  { label: "Nosotros", href: "#nosotros" },        // Requiere id="nosotros" en AboutSection o Footer
+const brands = [
+  "ZELTA", "YAAR", "WIRE FLEX", "VR PLAST", "Viyilant", "VALCAR",
+  "Tecnocom", "TBCIN", "Tacsa", "TAAD", "STARLIGHT", "SMARTFIX",
+  "Sin par", "SILVER SHADOW", "Sica", "SERENA", "SCHAFER", "SANTORO",
+  "SAN JUSTO", "SAMET", "ROMAX", "Richi", "REFLEX", "RAPIFIX",
+  "Psf", "POLINAM", "PHILIPS", "PERCANPLAST", "NITANYL", "Mota",
+  "Mig", "MH", "LUXOM", "LUMILAGRO", "LORENZETTI", "Light Tronic",
+  "Kalop", "Jeluz", "ILUMINAR", "Igmaplast", "IGMA", "HELATODO",
+  "Grilon", "Giny plast", "GINY PLAS", "GENROD", "GENESIS", "Gen rod",
+  "GAMISOL", "FIBOSA", "FERROLUX", "F.S", "Eveready", "Energizer",
+  "CORILUX", "CONOMETAL", "Candela", "BONOMINI", "BMB", "BLUMT",
+  "ASC", "ARGENJAB", "ANTHAY", "ABB", "9 DE JULIO", "3M", "180° ILUMINACION"
 ];
 
-const Header = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const BrandsSection = () => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(12);
 
-  const handleNavClick = (href: string) => {
-    setIsMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setItemsPerPage(6);
+      } else {
+        setItemsPerPage(12);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const totalPages = Math.ceil(brands.length / itemsPerPage);
+  
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentPage((prev) => (prev + 1) % totalPages);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [totalPages]);
+  
+  const currentBrands = brands.slice(
+    currentPage * itemsPerPage,
+    (currentPage + 1) * itemsPerPage
+  );
+  
+  const goToPrev = () => {
+    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
+  };
+  
+  const goToNext = () => {
+    setCurrentPage((prev) => (prev + 1) % totalPages);
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-industrial-dark/95 backdrop-blur-md border-b border-industrial-light/20 transition-all duration-300">
+    // AQUÍ ESTÁ EL CAMBIO IMPORTANTE: id="marcas"
+    <section id="marcas" className="py-20 bg-concrete scroll-mt-24">
       <div className="container">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <a href="#" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-2">
-            <img 
-              src={logo} 
-              alt="La Plata LED" 
-              className="h-14 md:h-16 lg:h-18 w-auto"
-            />
-          </a>
-          
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <button
-                key={item.href}
-                onClick={() => handleNavClick(item.href)}
-                className="text-steel hover:text-white transition-colors font-medium text-sm uppercase tracking-wide"
-              >
-                {item.label}
-              </button>
-            ))}
-          </nav>
-          
-          {/* Right side */}
-          <div className="flex items-center gap-4">
-            {/* WhatsApp CTA */}
-            <Button variant="whatsapp" size="sm" asChild className="hidden sm:flex font-bold">
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="w-4 h-4 mr-2" />
-                <span>WhatsApp</span>
-              </a>
-            </Button>
-            
-            {/* Mobile menu button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-white p-2 hover:bg-white/5 rounded-md transition-colors"
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <span className="text-led-glow font-semibold text-sm uppercase tracking-wide mb-4 block">
+            Marcas de confianza
+          </span>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+            +65 marcas reconocidas del rubro
+          </h2>
+          <p className="text-muted-foreground text-lg">
+            Solo productos originales, con garantía y respaldo comercial.
+          </p>
         </div>
         
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-industrial-light/20 animate-fade-in">
-            <div className="flex flex-col gap-2">
-              {navItems.map((item) => (
-                <button
-                  key={item.href}
-                  onClick={() => handleNavClick(item.href)}
-                  className="text-steel hover:text-white hover:bg-white/5 transition-all font-medium text-left px-4 py-3 rounded-lg"
-                >
-                  {item.label}
-                </button>
+        <div className="relative max-w-4xl mx-auto mb-8">
+          <button onClick={goToPrev} className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-10 w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center hover:border-led-glow/50 hover:text-led-glow transition-all duration-300 shadow-md">
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          
+          <button onClick={goToNext} className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-10 w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center hover:border-led-glow/50 hover:text-led-glow transition-all duration-300 shadow-md">
+            <ChevronRight className="w-5 h-5" />
+          </button>
+          
+          <div className="min-h-[280px]">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {currentBrands.map((brand, index) => (
+                <div key={`${currentPage}-${index}`} className="flex items-center gap-2 bg-card rounded-xl px-3 md:px-4 py-3 border border-border hover:border-led-glow/30 hover:shadow-card transition-all duration-300 animate-fade-in">
+                  <CheckCircle className="w-4 h-4 text-led-glow flex-shrink-0" />
+                  <span className="font-medium text-foreground text-sm truncate">{brand}</span>
+                </div>
               ))}
-              {/* Botón extra de WhatsApp en menú móvil */}
-              <div className="mt-2 px-4">
-                <Button className="w-full bg-led-glow text-industrial-dark font-bold hover:bg-led-glow-soft" asChild>
-                   <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                    <MessageCircle className="w-4 h-4 mr-2" />
-                    Chatear por WhatsApp
-                  </a>
-                </Button>
-              </div>
             </div>
-          </nav>
-        )}
+          </div>
+          
+          <div className="flex justify-center gap-2 mt-8 flex-wrap px-4">
+            {[...Array(totalPages)].map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentPage(index)}
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 flex-shrink-0 ${index === currentPage ? "bg-led-glow w-8" : "bg-border hover:bg-muted-foreground"}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="flex justify-center">
+            <Button className="bg-led-glow text-industrial-dark hover:bg-led-glow-soft font-bold shadow-glow text-base px-8 py-6 h-auto w-auto rounded-full transform transition-transform hover:scale-105" asChild>
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="w-5 h-5 mr-2" />
+                CONTACTAR ASESOR
+              </a>
+            </Button>
+        </div>
       </div>
-    </header>
+    </section>
   );
 };
 
-export default Header;
+export default BrandsSection;

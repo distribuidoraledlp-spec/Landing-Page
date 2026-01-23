@@ -61,9 +61,13 @@ const ProductLinesSection = () => {
         {/* Product Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {productLines.map((product, index) => (
-            <div 
+            /* CAMBIO IMPORTANTE: Convertimos el contenedor en un enlace <a> */
+            <a
               key={index}
-              className="group relative bg-card rounded-2xl p-8 shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 border border-border"
+              href={getWhatsAppLink(product.whatsappMessage)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative bg-card rounded-2xl p-8 shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 border border-border block cursor-pointer"
             >
               {/* Gradient background */}
               <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${product.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
@@ -82,15 +86,13 @@ const ProductLinesSection = () => {
                   {product.description}
                 </p>
                 
-                {/* CTA */}
-                <Button variant="ghost" size="sm" className="text-led-glow hover:text-led-soft hover:bg-led-glow/10" asChild>
-                  <a href={getWhatsAppLink(product.whatsappMessage)} target="_blank" rel="noopener noreferrer">
-                    <MessageCircle className="w-4 h-4" />
-                    Consultar stock
-                  </a>
-                </Button>
+                {/* CTA (Visualmente igual, pero ya no necesita ser un link <a> separado porque todo el bloque lo es) */}
+                <div className="inline-flex items-center text-sm font-medium text-led-glow hover:text-led-soft transition-colors">
+                  <MessageCircle className="w-4 h-4 mr-2" />
+                  Consultar stock
+                </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>

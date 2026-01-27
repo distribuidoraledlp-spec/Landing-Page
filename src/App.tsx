@@ -1,11 +1,13 @@
+import { useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
-// --- IMPORTACIONES CORREGIDAS (Todas apuntan a components/landing) ---
+// Importaciones
 import Header from "@/components/landing/Header";
 import Footer from "@/components/landing/Footer"; 
 import FloatingWhatsApp from "@/components/landing/FloatingWhatsApp";
@@ -19,17 +21,50 @@ import AboutSection from "@/components/landing/AboutSection";
 
 const queryClient = new QueryClient();
 
-// 1. Componente de Página de Inicio (Home)
-const HomePage = () => (
-  <>
-    <HeroSection />
-    <ProductLinesSection />
-    <BrandsSection />
-    <HowWeWorkSection />
-  </>
-);
+// --- AQUÍ ESTÁ LA MAGIA ---
+// Este componente renderiza TODO, pero revisa la URL para hacer scroll
+const HomePage = () => {
+  const location = useLocation();
 
-// 2. Componente Simple de Error 404 (Para que no falle si no tienes el archivo)
+  useEffect(() => {
+    // Detectamos la ruta actual (ej: "/marcas")
+    const path = location.pathname;
+    
+    // Si es la home pura "/", subimos arriba de todo
+    if (path === "/") {
+      window.scrollTo(0, 0);
+      return;
+    }
+
+    // Quitamos la barra "/" para obtener el ID (ej: "marcas")
+    const sectionId = path.replace("/", "");
+    
+    // Buscamos la sección en el HTML
+    const element = document.getElementById(sectionId);
+    
+    // Si existe, hacemos scroll hasta ella
+    if (element) {
+      setTimeout(() => {
+        element.scrollIntoView({ behavior: "smooth" });
+      }, 100); // Pequeño delay para asegurar que la página cargó
+    }
+  }, [location]); // Se ejecuta cada vez que cambia la URL
+
+  return (
+    <>
+      <HeroSection />
+      {/* Asegurate que tus secciones tengan los IDs correctos dentro de sus archivos */}
+      <ProductLinesSection />
+      <BrandsSection />
+      <HowWeWorkSection />
+      <WarehouseSection />
+      <WarrantySection />
+      <AboutSection />
+    </>
+  );
+};
+
+// Página de Error simple
 const NotFoundPage = () => (
   <div className="min-h-screen flex flex-col items-center justify-center bg-background text-center px-4">
     <h1 className="text-4xl font-bold text-led-glow mb-4">404</h1>
@@ -47,29 +82,24 @@ const App = () => (
       <Sonner />
       
       <BrowserRouter>
-        {/* Header y WhatsApp fijos */}
         <Header />
         <FloatingWhatsApp />
         
         <main className="pt-20 min-h-screen bg-background">
           <Routes>
-            {/* RUTA PRINCIPAL */}
+            {/* TRUCO: Todas las rutas cargan la MISMA HomePage que contiene TODO */}
             <Route path="/" element={<HomePage />} />
+            <Route path="/productos" element={<HomePage />} />
+            <Route path="/marcas" element={<HomePage />} />
+            <Route path="/como-comprar" element={<HomePage />} />
+            <Route path="/deposito" element={<HomePage />} />
+            <Route path="/garantia" element={<HomePage />} />
+            <Route path="/nosotros" element={<HomePage />} />
             
-            {/* RUTAS INDIVIDUALES (Páginas) */}
-            <Route path="/productos" element={<ProductLinesSection />} />
-            <Route path="/marcas" element={<BrandsSection />} />
-            <Route path="/como-comprar" element={<HowWeWorkSection />} />
-            <Route path="/deposito" element={<WarehouseSection />} />
-            <Route path="/garantia" element={<WarrantySection />} />
-            <Route path="/nosotros" element={<AboutSection />} />
-            
-            {/* RUTA DE ERROR */}
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
 
-        {/* Footer fijo */}
         <Footer />
       </BrowserRouter>
       

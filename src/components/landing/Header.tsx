@@ -1,58 +1,62 @@
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom"; // Importamos Link para navegar
 import logo from "@/assets/logo.png";
 
 const WHATSAPP_LINK = "https://api.whatsapp.com/send/?phone=5492213146974&text&type=phone_number&app_absent=0";
 
-// --- CAMBIO AQUÍ: Lista de navegación expandida y ordenada ---
+// Configuración de URLs para multi-página (usamos / en vez de #)
 const navItems = [
-  { label: "Productos", href: "#productos" },      // Debe coincidir con id="productos"
-  { label: "Marcas", href: "#marcas" },            // Coincide con id="marcas" en BrandsSection
-  { label: "Cómo comprar", href: "#como-comprar" }, // Coincide con id="como-comprar" en HowWeWorkSection
-  { label: "Nuestro Depósito", href: "#deposito" }, // Coincide con id="deposito" en WarehouseSection
-  { label: "Garantía", href: "#garantia" },        // Coincide con id="garantia" en WarrantySection
-  { label: "Nosotros", href: "#nosotros" },        // Debe coincidir con id="nosotros"
+  { label: "Productos", href: "/productos" },
+  { label: "Marcas", href: "/marcas" },
+  { label: "Cómo comprar", href: "/como-comprar" },
+  { label: "Nuestro Depósito", href: "/deposito" },
+  { label: "Garantía", href: "/garantia" },
+  { label: "Nosotros", href: "/nosotros" },
 ];
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation(); // Hook para saber en qué página estamos y pintarla de color activo
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = () => {
     setIsMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    window.scrollTo(0, 0); // Al cambiar de página, subir el scroll arriba de todo
   };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-industrial-dark/95 backdrop-blur-md border-b border-industrial-light/20">
       <div className="container">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <a href="#" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-2">
+          {/* Logo con Link al Inicio */}
+          <Link to="/" onClick={handleNavClick} className="flex items-center gap-2">
             <img 
               src={logo} 
               alt="La Plata LED" 
               className="h-14 md:h-16 lg:h-18 w-auto"
             />
-          </a>
+          </Link>
           
-          {/* Desktop Navigation */}
+          {/* Navegación Escritorio (Desktop) */}
           <nav className="hidden md:flex items-center gap-6 lg:gap-8">
-            {navItems.map((item) => (
-              <button
-                key={item.href}
-                onClick={() => handleNavClick(item.href)}
-                className="text-steel hover:text-white transition-colors font-medium text-sm whitespace-nowrap"
-              >
-                {item.label}
-              </button>
-            ))}
+            {navItems.map((item) => {
+              const isActive = location.pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  className={`transition-colors font-medium text-sm whitespace-nowrap ${
+                    isActive ? "text-led-glow font-bold" : "text-steel hover:text-white"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </nav>
           
-          {/* Right side */}
+          {/* Lado Derecho (WhatsApp + Menú Móvil) */}
           <div className="flex items-center gap-4">
             {/* WhatsApp CTA */}
             <Button variant="whatsapp" size="sm" asChild>
@@ -62,7 +66,7 @@ const Header = () => {
               </a>
             </Button>
             
-            {/* Mobile menu button */}
+            {/* Botón Menú Hamburguesa */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden text-white p-2"
@@ -73,19 +77,27 @@ const Header = () => {
           </div>
         </div>
         
-        {/* Mobile Navigation */}
+        {/* Navegación Móvil (Desplegable) */}
         {isMobileMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-industrial-light/20 max-h-[80vh] overflow-y-auto">
+          <nav className="md:hidden py-4 border-t border-industrial-light/20 max-h-[80vh] overflow-y-auto bg-industrial-dark">
             <div className="flex flex-col gap-4">
-              {navItems.map((item) => (
-                <button
-                  key={item.href}
-                  onClick={() => handleNavClick(item.href)}
-                  className="text-steel hover:text-white transition-colors font-medium text-left py-2 px-2"
-                >
-                  {item.label}
-                </button>
-              ))}
+              {navItems.map((item) => {
+                const isActive = location.pathname === item.href;
+                return (
+                  <Link
+                    key={item.href}
+                    to={item.href}
+                    onClick={handleNavClick}
+                    className={`transition-colors font-medium text-left py-2 px-4 border-l-2 ${
+                      isActive 
+                        ? "text-led-glow border-led-glow bg-white/5" 
+                        : "text-steel border-transparent hover:text-white"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
             </div>
           </nav>
         )}

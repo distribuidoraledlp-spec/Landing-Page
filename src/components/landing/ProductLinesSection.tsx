@@ -1,10 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Download, Zap, Lightbulb, Wrench, Droplets } from "lucide-react";
 
-// RUTA DEL ARCHIVO PDF
-// Asegúrate de que el archivo se llame 'catalogo.pdf' y esté en la carpeta 'public'
+// Configuración del PDF
 const PDF_URL = "/catalogo.pdf";
-const PDF_FILENAME = "LaPlataLED_Catalogo.pdf";
 
 const productLines = [
   {
@@ -60,7 +58,7 @@ const ProductLinesSection = () => {
             <a
               key={index}
               href={PDF_URL}
-              download={PDF_FILENAME}
+              download="LaPlataLED_Catalogo.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative bg-card rounded-2xl p-8 shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 border border-border block cursor-pointer"
@@ -71,4 +69,44 @@ const ProductLinesSection = () => {
               <div className="relative">
                 {/* Icon */}
                 <div className="w-14 h-14 rounded-xl bg-industrial-dark/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <product
+                  <product.icon className={`w-7 h-7 ${product.iconColor}`} />
+                </div>
+                
+                {/* Content */}
+                <h3 className="font-display text-xl font-bold text-foreground mb-3">
+                  {product.title}
+                </h3>
+                <p className="text-muted-foreground mb-6 leading-relaxed">
+                  {product.description}
+                </p>
+                
+                {/* CTA - Texto cambiado a 'ver productos' */}
+                <div className="inline-flex items-center text-sm font-medium text-led-glow hover:text-led-soft transition-colors uppercase tracking-wide font-bold">
+                  <Download className="w-4 h-4 mr-2" />
+                  ver productos
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        {/* Nuevo Botón Grande Abajo */}
+        <div className="text-center">
+          <Button 
+            size="lg" 
+            className="w-full md:w-auto px-8 py-6 text-lg bg-led-glow hover:bg-led-glow-soft text-industrial-dark font-bold shadow-glow hover:shadow-glow-lg transition-all" 
+            asChild
+          >
+            <a href={PDF_URL} download="LaPlataLED_Catalogo.pdf" target="_blank" rel="noopener noreferrer">
+              <Download className="w-6 h-6 mr-2" />
+              Descargar Catálogo
+            </a>
+          </Button>
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+export default ProductLinesSection;

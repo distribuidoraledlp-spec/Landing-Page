@@ -52,3 +52,23 @@ const ProductLinesSection = () => {
           <p className="text-muted-foreground text-lg">
             Abastecimiento completo en un solo proveedor.
           </p>
+        </div>
+        
+        {/* Product Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {productLines.map((product, index) => (
+            <a
+              key={index}
+              href={PDF_URL}
+              download={PDF_FILENAME}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative bg-card rounded-2xl p-8 shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 border border-border block cursor-pointer"
+            >
+              {/* Gradient background */}
+              <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${product.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+              
+              <div className="relative">
+                {/* Icon */}
+                <div className="w-14 h-14 rounded-xl bg-industrial-dark/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <product

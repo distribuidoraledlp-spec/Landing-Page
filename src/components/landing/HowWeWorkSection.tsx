@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { FileText, MessageSquare, Search, FileSpreadsheet, Package, Truck } from "lucide-react";
+import { FileText, MessageSquare, Search, FileSpreadsheet, Package, Truck, Banknote } from "lucide-react";
 
 const WHATSAPP_CATALOG_LINK = "https://api.whatsapp.com/send/?phone=5492213146974&text=Hola!%20%C2%BF%C3%B3mo%20est%C3%A1s%3F%20Quiero%20solicitar%20el%20cat%C3%A1logo%20mayorista&type=phone_number&app_absent=0";
 
@@ -39,7 +39,7 @@ const steps = [
 const HowWeWorkSection = () => {
   return (
     <section id="como-comprar" className="py-24 bg-background scroll-mt-20 overflow-hidden">
-      <div className="container px-4"> {/* Aseguramos padding lateral en el contenedor general */}
+      <div className="container px-4">
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
@@ -49,6 +49,16 @@ const HowWeWorkSection = () => {
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
             Cómo empezamos a trabajar juntos
           </h2>
+
+          {/* --- AVISO LIMPIO DE COMPRA MÍNIMA --- */}
+          <div className="mt-6 inline-flex items-center gap-2 px-5 py-2 rounded-full bg-amber-50 border border-amber-200/60 shadow-sm">
+            <Banknote className="w-5 h-5 text-amber-600" />
+            <span className="text-base font-semibold text-amber-900 tracking-tight">
+              Compra mínima mayorista: <span className="font-bold">$500.000</span>
+            </span>
+          </div>
+          {/* ----------------------------------- */}
+
         </div>
         
         {/* Steps */}
@@ -96,8 +106,6 @@ const HowWeWorkSection = () => {
         </div>
         
         {/* CTA FINAL */}
-        {/* FIX: Usamos 'w-full flex justify-center' para centrado absoluto.
-            El botón tiene 'w-auto' para no ser un ladrillo largo y 'mx-auto' por seguridad. */}
         <div className="mt-16 w-full flex justify-center items-center">
           <Button 
             className="bg-led-glow text-industrial-dark hover:bg-led-glow-soft font-bold shadow-glow text-base px-8 py-6 h-auto w-auto rounded-full mx-auto transform transition-transform hover:scale-105"
